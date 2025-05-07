@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ManBasic | Thời trang nam hiện đại</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Reset and base styles */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: #fff; color: #222; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+
+    /* Navbar */
+    .navbar {
+      background: #222;
+      color: #fff;
+      padding: 16px 0;
+    }
+    .navbar .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .navbar .logo {
+      font-size: 2rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+      color: #00bfae;
+    }
+    .navbar nav ul {
+      display: flex;
+      gap: 24px;
+    }
+    .navbar nav ul li {
+      position: relative;
+    }
+    .navbar nav ul li:hover > ul {
+      display: block;
+    }
+    .navbar nav ul ul {
+      display: none;
+      position: absolute;
+      top: 32px;
+      left: 0;
+      background: #fff;
+      color: #222;
+      min-width: 180px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      z-index: 10;
+    }
+    .navbar nav ul ul li {
+      padding: 10px 16px;
+      white-space: nowrap;
+    }
+    .navbar nav ul ul li:hover {
+      background: #f0f0f0;
+    }
+    .navbar .actions {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+    .navbar .actions a {
+      color: #fff;
+      font-size: 1.2rem;
+      transition: color 0.2s;
+    }
+    .navbar .actions a:hover {
+      color: #00bfae;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(90deg, #00bfae 0%, #00796b 100%);
+      color: #fff;
+      padding: 48px 0 32px 0;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 24px;
+    }
+    .hero .cta {
+      background: #fff;
+      color: #00bfae;
+      padding: 12px 32px;
+      border-radius: 24px;
+      font-weight: bold;
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .hero .cta:hover {
+      background: #00bfae;
+      color: #fff;
+      border: 1px solid #fff;
+    }
+
+    /* Product grid */
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      margin: 40px 0 24px 0;
+      font-weight: 600;
+      color: #222;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 32px;
+      margin-bottom: 48px;
+    }
+    .product-card {
+      background: #fafafa;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      overflow: hidden;
+      transition: box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .product-card:hover {
+      box-shadow: 0 4px 16px rgba(0,191,174,0.12);
+    }
+    .product-card img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      background: #e0e0e0;
+    }
+    .product-card .info {
+      padding: 16px;
+      text-align: center;
+    }
+    .product-card .name {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+    .product-card .price {
+      color: #00bfae;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+    .product-card .btn {
+      background: #00bfae;
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      padding: 8px 20px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.2s;
+    }
+    .product-card .btn:hover {
+      background: #00796b;
+    }
+
+    /* Footer */
+    .footer {
+      background: #222;
+      color: #fff;
+      padding: 32px 0 16px 0;
+      margin-top: 48px;
+    }
+    .footer .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      justify-content: space-between;
+    }
+    .footer .col {
+      flex: 1 1 200px;
+      min-width: 180px;
+    }
+    .footer .col h4 {
+      margin-bottom: 12px;
+      font-size: 1.1rem;
+      color: #00bfae;
+    }
+    .footer .col ul li {
+      margin-bottom: 8px;
+      font-size: 0.98rem;
+    }
+    .footer .copyright {
+      text-align: center;
+      margin-top: 24px;
+      color: #aaa;
+      font-size: 0.95rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 800px) {
+      .navbar .container, .footer .container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .footer .container {
+        gap: 16px;
+      }
+    }
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 1.5rem; }
+      .section-title { font-size: 1.2rem; }
+      .product-card img { height: 180px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container">
+      <div class="logo">ManBasic</div>
+      <nav>
+        <ul>
+          <li><a href="#">Trang chủ</a></li>
+          <li>
+            <a href="#">Sản phẩm</a>
+            <ul>
+              <li><a href="#">Áo thun</a></li>
+              <li><a href="#">Áo sơ mi</a></li>
+              <li><a href="#">Áo khoác</a></li>
+              <li><a href="#">Quần dài</a></li>
+              <li><a href="#">Quần jeans</a></li>
+              <li><a href="#">Quần short</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Bộ sưu tập</a></li>
+          <li><a href="#">Về chúng tôi</a></li>
+          <li><a href="#">Liên hệ</a></li>
+        </ul>
+      </nav>
+      <div class="actions">
+        <a href="#" title="Tìm kiếm">&#128269;</a>
+        <a href="#" title="Giỏ hàng">&#128722;</a>
+        <a href="#" title="Đăng nhập">&#128100;</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1>Thời trang nam hiện đại - ManBasic</h1>
+      <p>Khám phá bộ sưu tập mới nhất, phong cách trẻ trung, năng động và lịch lãm.</p>
+      <button class="cta">Mua ngay</button>
+    </div>
+  </section>
+
+  <!-- Product Grid -->
+  <section>
+    <div class="container">
+      <div class="section-title">Sản phẩm nổi bật</div>
+      <div class="product-grid">
+        <!-- Product 1 -->
+        <div class="product-card">
+          <img src="https://via.placeholder.com/300x400?text=Product+1" alt="Áo thun nam basic">
+          <div class="info">
+            <div class="name">Áo thun nam basic</div>
+            <div class="price">199.000đ</div>
+            <button class="btn">Thêm vào giỏ</button>
+          </div>
+        </div>
+        <!-- Product 2 -->
+        <div class="product-card">
+          <img src="https://via.placeholder.com/300x400?text=Product+2" alt="Áo sơ mi trắng">
+          <div class="info">
+            <div class="name">Áo sơ mi trắng</div>
+            <div class="price">299.000đ</div>
+            <button class="btn">Thêm vào giỏ</button>
+          </div>
+        </div>
+        <!-- Product 3 -->
+        <div class="product-card">
+          <img src="https://via.placeholder.com/300x400?text=Product+3" alt="Quần jeans xanh">
+          <div class="info">
+            <div class="name">Quần jeans xanh</div>
+            <div class="price">399.000đ</div>
+            <button class="btn">Thêm vào giỏ</button>
+          </div>
+        </div>
+        <!-- Product 4 -->
+        <div class="product-card">
+          <img src="https://via.placeholder.com/300x400?text=Product+4" alt="Áo khoác bomber">
+          <div class="info">
+            <div class="name">Áo khoác bomber</div>
+            <div class="price">499.000đ</div>
+            <button class="btn">Thêm vào giỏ</button>
+          </div>
+        </div>
+        <!-- Add more products as needed -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="col">
+        <h4>Về ManBasic</h4>
+        <ul>
+          <li><a href="#">Giới thiệu</a></li>
+          <li><a href="#">Tuyển dụng</a></li>
+          <li><a href="#">Hệ thống cửa hàng</a></li>
+        </ul>
+      </div>
+      <div class="col">
+        <h4>Dịch vụ khách hàng</h4>
+        <ul>
+          <li><a href="#">Chính sách điều khoản</a></li>
+          <li><a href="#">Hướng dẫn mua hàng</a></li>
+          <li><a href="#">Chính sách đổi trả</a></li>
+          <li><a href="#">Chính sách bảo hành</a></li>
+        </ul>
+      </div>
+      <div class="col">
+        <h4>Liên hệ</h4>
+        <ul>
+          <li>Hotline: 0123 456 789</li>
+          <li>Email: support@manbasic.com</li>
+          <li><a href="#">Facebook</a> | <a href="#">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      &copy; 2024 ManBasic. All rights reserved.
+    </div>
+  </footer>
+</body>
+</html>
