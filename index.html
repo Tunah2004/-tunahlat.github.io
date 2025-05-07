@@ -131,12 +131,12 @@
     .product-card:hover {
       box-shadow: 0 4px 16px rgba(0,191,174,0.12);
     }
-    .product-card img {
-      width: 100%;
-      height: 260px;
-      object-fit: cover;
-      background: #e0e0e0;
-    }
+  .product-card img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  background: #e0e0e0;
+}
     .product-card .info {
       padding: 16px;
       text-align: center;
@@ -333,6 +333,39 @@
     </div>
     <div class="copyright">
       &copy; 2024 ManBasic. All rights reserved.
+@media (max-width: 600px) {
+  .container {
+    padding: 0 12px;
+  }
+  .hero h1 {
+    font-size: 1.4rem;
+    line-height: 1.5;
+  }
+  .hero p {
+    font-size: 1rem;
+  }
+  .section-title {
+    font-size: 1.4rem;
+    margin-top: 24px;
+  }
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .product-card img {
+    aspect-ratio: 3 / 4;
+  }
+  .product-card .name {
+    font-size: 1rem;
+  }
+  .product-card .price {
+    font-size: 0.95rem;
+  }
+  .product-card .btn {
+    font-size: 0.95rem;
+    padding: 6px 16px;
+  }
+}
     </div>
   </footer>
 </body>
